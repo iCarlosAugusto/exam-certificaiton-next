@@ -24,15 +24,13 @@ function QuestionSingle({text, alternatives, lastUserReply}: QuestionEntity) {
 
     return(
         <div className="shadow-md w-full rounded-lg mt-10">
-            <div className="bg-blue-300 flex p-6 rounded-t-lg">
-                <div>
-                    <span className="text-white">Questão 25 - </span>
+            <div className="bg-blue-300 flex rounded-t-lg">
+                <div className="bg-blue-600 h-full p-4 rounded-tl-lg">
+                    <span className="text-white font-bold">Questão 25</span>
                 </div>
-                <div>
-                    <span className="text-white">AWS - ACL-02 - </span>
-                    <span className="text-white">Segunça</span>
+                <div className="flex items-center ml-5">
+                    <span className="text-white font-bold">AWS - ACL-02 - Segurança</span>
                 </div>
-
             </div>
 
             <div className="p-6">

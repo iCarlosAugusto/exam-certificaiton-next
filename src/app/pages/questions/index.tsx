@@ -2,6 +2,7 @@
 "use client"
 
 import { Button } from "@/app/components/button";
+import { Chip } from "@/app/components/chip";
 import { QuestionSingle } from "@/app/components/question";
 import { QuestionMultiple } from "@/app/components/questionMultiple";
 import { QuestionEntity, QuestionType } from "@/app/entities/question.entity";
@@ -86,9 +87,9 @@ function Questions() {
                     <div>
                         <span>Questões que</span>
                         <div>
-                            <Button text="Não resolvi" onClick={() => console.log("a")}/>
-                            <Button text="Acertei" onClick={() => console.log("a")}/>
-                            <Button text="Errei" onClick={() => console.log("a")}/>
+                            <Chip label="Não resolvi" className="mr-2" onClick={() => console.log("click!")}/>
+                            <Chip label="Errei" className="mr-2" onClick={() => console.log("click!")}/>
+                            <Chip label="Acertei" className="mr-2" onClick={() => console.log("click!")}/>
                         </div>
                     </div>
                     <div className="flex flex-col ml-5">
@@ -106,7 +107,11 @@ function Questions() {
                         </select>
                     </div>
                 </div>
-                <Button text="Buscar" onClick={() => console.log("buscar!")}/>
+                <Button
+                    text="Buscar"
+                    onClick={() => console.log("buscar!")}
+                    className="mt-9"
+                />
             </div>
             
             {questions?.map((question, index )=> (

@@ -3,6 +3,7 @@
 
 import { Button } from "@/app/components/button";
 import { Chip } from "@/app/components/chip";
+import { Navbar } from "@/app/components/navbar";
 import { QuestionSingle } from "@/app/components/question";
 import { QuestionMultiple } from "@/app/components/questionMultiple";
 import { QuestionEntity, QuestionType } from "@/app/entities/question.entity";
@@ -79,48 +80,57 @@ function Questions() {
     //
 
     return (
-        <main className="px-12">
-            <h1>Questões AWS Cloud Patricioner</h1>
+        <Fragment>
+            <Navbar/>
+            <main className="px-6 md:px-32 lg:px-72">
+                <h1>Questões AWS Cloud Patricioner</h1>
 
-            <div className="flex flex-col items-start">
-                <div className="flex">
-                    <div>
-                        <span>Questões que</span>
+
+
+                <div className="flex flex-col items-start">
+                    <div className="flex">
                         <div>
-                            <Chip label="Não resolvi" className="mr-2" onClick={() => console.log("click!")}/>
-                            <Chip label="Errei" className="mr-2" onClick={() => console.log("click!")}/>
-                            <Chip label="Acertei" className="mr-2" onClick={() => console.log("click!")}/>
+                            <span>Questões que</span>
+                            <div>
+                                <Chip label="Não resolvi" className="mr-2" onClick={() => console.log("click!")}/>
+                                <Chip label="Errei" className="mr-2" onClick={() => console.log("click!")}/>
+                                <Chip label="Acertei" className="mr-2" onClick={() => console.log("click!")}/>
+                            </div>
+                        </div>
+                        <div className="flex flex-col ml-5">
+                            <label htmlFor="hs-select-label" className="block text-sm font-medium mb-2">Label</label>
+                            <select id="hs-select-label" className="py-3 px-4 pe-9 block w-full border-gray-300 border-2  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none   dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                <option selected={true}>Open this select menu</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                        <div className="flex flex-col ml-5">
+                            <label htmlFor="hs-select-label" className="block text-sm font-medium mb-2">Label</label>
+                            <select id="hs-select-label" className="py-3 px-4 pe-9 block w-full border-gray-300 border-2  rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none   dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                <option selected={true}>Open this select menu</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
                         </div>
                     </div>
-                    <div className="flex flex-col ml-5">
-                        <span>Prova</span>
-                        <select name="" id="">
-                            <option value="">CLF-01</option>
-                            <option value="">CLF-01</option>
-                        </select>
-                    </div>
-                    <div className="flex flex-col ml-5">
-                        <span>Assunto</span>
-                        <select name="" id="">
-                            <option value="">CLF-01</option>
-                            <option value="">CLF-01</option>
-                        </select>
-                    </div>
+                    <Button
+                        text="Buscar"
+                        onClick={() => console.log("buscar!")}
+                        className="mt-9"
+                    />
                 </div>
-                <Button
-                    text="Buscar"
-                    onClick={() => console.log("buscar!")}
-                    className="mt-9"
-                />
-            </div>
-            
-            {questions?.map((question, index )=> (
-                question.questionType === QuestionType.multipleReplies 
-                    ? <QuestionMultiple {...question} key={index}/> 
-                    : <QuestionSingle {...question} key={index}/>
-            ))}
+                
+                {questions?.map((question, index )=> (
+                    question.questionType === QuestionType.multipleReplies 
+                        ? <QuestionMultiple {...question} key={index}/> 
+                        : <QuestionSingle {...question} key={index}/>
+                ))}
 
-        </main>
+            </main>
+        </Fragment>
 
     )
 }

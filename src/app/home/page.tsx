@@ -1,5 +1,3 @@
-import { Fragment } from "react"
-
 export default function HomePage() {
 
     const courses = [
@@ -44,7 +42,7 @@ export default function HomePage() {
                 <span className="text-6xl font-semibold">Explore nossos cursos disponíveis!</span>
                 <div className="flex justify-evenly items-center mt-10">
                     {courses.map(el => (
-                        <div className="flex flex-col items-center justify-center">
+                        <div className="flex flex-col items-center justify-center cursor-pointer">
                             <div className="p-10 bg-slate-100 rounded-2xl flex items-center justify-center h-36 w-36">
                                 <img src={el.url} alt="java" />
                             </div>
@@ -52,10 +50,7 @@ export default function HomePage() {
                             <span className="mt-2">{el.name}</span>
                         </div>
                     ))}
-
-
                 </div>
-
             </div>
         </div>
     )

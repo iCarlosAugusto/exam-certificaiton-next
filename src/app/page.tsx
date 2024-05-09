@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { Questions } from "./pages/questions";
+import HomePage from "./home/page";
 
 export default async function Home() {
   return (
-    <Questions/>
+    <HomePage/>
   );
 }

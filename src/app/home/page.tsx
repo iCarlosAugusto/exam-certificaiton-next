@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 
-function HomeScreen() {
+export default function HomePage() {
 
     const courses = [
         {
@@ -60,5 +60,3 @@ function HomeScreen() {
         </div>
     )
 }
-
-export { HomeScreen }

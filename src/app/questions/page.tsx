@@ -1,17 +1,15 @@
 
 "use client"
 
-import { Button } from "@/app/components/button";
-import { Chip } from "@/app/components/chip";
-import { Navbar } from "@/app/components/navbar";
-import { QuestionSingle } from "@/app/components/question";
-import { QuestionMultiple } from "@/app/components/questionMultiple";
-import { Search } from "@/app/components/search";
-import { QuestionEntity, QuestionType } from "@/app/entities/question.entity";
+import { Navbar } from "@/components/navbar";
+import { QuestionSingle } from "@/components/question";
+import { QuestionMultiple } from "@/components/questionMultiple";
+import { Search } from "@/components/search";
+import { QuestionEntity, QuestionType } from "@/entities/question.entity";
 import { useEffect, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 
-function Questions() {
+export default function Questions() {
 
     const [questions, setQuestions] = useState<QuestionEntity[]>();
 
@@ -97,5 +95,3 @@ function Questions() {
 
     )
 }
-
-export { Questions }

@@ -1,6 +1,5 @@
-import { Button } from "@/app/components/button"
 
-function Authentication() {
+export default function Authentication() {
 
 
     const handleAuth = () => {
@@ -28,5 +27,3 @@ function Authentication() {
         </div>
     )
 }
-
-export { Authentication }

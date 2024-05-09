@@ -1,6 +1,6 @@
 import { Fragment } from "react/jsx-runtime"
 
-function CourseCatalog() {
+export default function CourseCatalog() {
     return (
         <Fragment>
             <div className="w-full bg-red-400 px-28 py-2 flex justify-between items-center">
@@ -22,5 +22,3 @@ function CourseCatalog() {
         </Fragment>
     )
 }
-
-export { CourseCatalog }

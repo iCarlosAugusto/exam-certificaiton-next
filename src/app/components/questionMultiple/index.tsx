@@ -43,7 +43,7 @@ function QuestionMultiple({text, alternatives, lastUserReply}: QuestionEntity) {
             </div>
 
             <div className="p-6">
-                <p>{text}</p>
+                <p className="text-base font-medium">{text}</p>
                 {alternatives.map((alternative, index) =>
                     <div className="ml-6 mt-2" onClick={() => handlePickQuestion(alternative)}>
                         <Alternative 

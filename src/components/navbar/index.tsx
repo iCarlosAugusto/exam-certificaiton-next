@@ -1,7 +1,8 @@
 "use client";
 
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { ProfileMenu } from './profile.menu.component';
 
 const Navbar = () => {
 
@@ -17,6 +18,8 @@ const Navbar = () => {
 
   const isModalOpen = useRef<boolean>(false);
   const containerMenuMobile = useRef<HTMLDivElement>(null);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const isAuthenticated = true;
 
   return (
     <header>
@@ -47,11 +50,25 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-6">
-          <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">
-            <Link href={"authentication"}>
-              Sign in
-            </Link>
-          </button>
+          {isAuthenticated 
+            ?  
+              <div className='relative flex flex-col items-end'>
+                <div className="p-5 bg-orange-300 rounded-full w-6 h-6 flex items-center justify-center cursor-pointer" onClick={() => setShowProfileMenu(oldState => !oldState)}>
+                  <span className="text-white font-bold">C</span>
+                </div>
+                <div className='absolute top-11'>
+                  {showProfileMenu && (<ProfileMenu/>)}
+                </div>
+              </div>
+
+            :
+              <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">
+                <Link href={"authentication"}>
+                  Sign in
+                </Link>
+              </button>
+          }
+
           <button onClick={onToggleMenu} className="text-3xl cursor-pointer md:hidden">Open</button>
         </div>
       </nav>

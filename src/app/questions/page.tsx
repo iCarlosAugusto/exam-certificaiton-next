@@ -1,7 +1,6 @@
 
-"use client"
+"use client";
 
-import { Navbar } from "@/components/navbar";
 import { QuestionSingle } from "@/components/question";
 import { QuestionMultiple } from "@/components/questionMultiple";
 import { Search } from "@/components/search";
@@ -80,7 +79,6 @@ export default function Questions() {
 
     return (
         <Fragment>
-            <Navbar/>
             <main className="px-6 md:px-32 lg:px-72">
                 <h1>Questões AWS Cloud Patricioner</h1>
                 <Search/>

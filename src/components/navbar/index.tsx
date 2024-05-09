@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import React, { useRef } from 'react';
 
 const Navbar = () => {
@@ -21,7 +22,9 @@ const Navbar = () => {
     <header>
       <nav className="flex justify-between items-center w-[92%] mx-auto">
         <div>
-          <img className="w-16 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png" alt="Logo" />
+          <Link href={"/"}>
+            <img className="w-16 cursor-pointer" src="https://cdn-icons-png.flaticon.com/512/5968/5968204.png" alt="Logo" />
+          </Link>
         </div>
         <div ref={containerMenuMobile} className="nav-links duration-500 bg-white md:static absolute md:min-h-fit min-h-[100vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
           <button onClick={onToggleMenu} className="text-3xl cursor-pointer md:hidden">Fechar</button>
@@ -44,7 +47,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-6">
-          <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Sign in</button>
+          <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">
+            <Link href={"authentication"}>
+              Sign in
+            </Link>
+          </button>
           <button onClick={onToggleMenu} className="text-3xl cursor-pointer md:hidden">Open</button>
         </div>
       </nav>

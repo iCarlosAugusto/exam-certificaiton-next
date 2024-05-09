@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+"use client";
+
+import React, { useRef } from 'react';
 
 const Navbar = () => {
 

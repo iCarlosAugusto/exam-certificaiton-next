@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/button";
 import { Input } from "@/components/input"
-
 export default function Authentication() {
 
     const handleAuth = () => {
@@ -19,13 +18,12 @@ export default function Authentication() {
                     <span>Cadastrar</span>
                 </div>
 
-                <span className="font-semibold text-3xl">Participe da maior comunidade de estudos de TI do Brasil!</span>
-
-                <Input placeholder="Email"/>
-                <Input placeholder="Senha"/>
-                <Button text="Entrar" onClick={() => {}}/>
-            
-                
+                <span className="font-semibold text-3xl mb-5">Participe da maior comunidade de<br/> estudos de TI do Brasil!</span>
+                <form>
+                    <Input placeholder="Email"/>
+                    <Input placeholder="Senha"/>
+                    <Button text="Entrar" onClick={() => {}}/>
+                </form>
                 <span>Esqueci a senha</span>
             </div>
         </div>

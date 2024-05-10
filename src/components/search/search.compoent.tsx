@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { Button } from "../button";
 import { Chip } from "../chip";
 import Link from "next/link";
+import { Suspense } from "react";
 
 function SearchComponent() {
 
@@ -11,6 +12,7 @@ function SearchComponent() {
     const questionType = searchParams.get("questionType") ?? "1";
 
     return (
+        <Suspense fallback={<h1>Loading...</h1>}>
         <div className="flex flex-col items-start px-5 lg:px-0">
             <div className="flex flex-col lg:flex-row w-full">
                 <div>
@@ -34,6 +36,7 @@ function SearchComponent() {
                 className="mt-9"
             />
         </div>
+        </Suspense>
     )
 }
 

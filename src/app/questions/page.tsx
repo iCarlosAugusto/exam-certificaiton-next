@@ -5,7 +5,7 @@ import { QuestionSingle } from "@/components/question";
 import { QuestionMultiple } from "@/components/questionMultiple";
 import { Search } from "@/components/search";
 import { QuestionEntity, QuestionType } from "@/entities/question.entity";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 
 export default function Questions() {
@@ -81,7 +81,9 @@ export default function Questions() {
         <Fragment>
             <main className="px-6 md:px-32 lg:px-72">
                 <h1>Questões AWS Cloud Patricioner</h1>
-                <Search/>
+                <Suspense>
+                    <Search/>
+                </Suspense>
                 {questions?.map((question, index )=> (
                     question.questionType === QuestionType.multipleReplies 
                         ? <QuestionMultiple {...question} key={index}/> 

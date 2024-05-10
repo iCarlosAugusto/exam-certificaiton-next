@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { Fragment } from "react/jsx-runtime"
 
 function App() {
@@ -52,13 +52,13 @@ function App() {
         </div>
 
         <button className="bg-blue-400 px-6 py-2 rounded-xl text-white mt-6">
-          <Link to="/courses">
+          <Link href="/courses">
             Explorar todos os cursos
           </Link>
         </button>
 
         <button>
-          <Link to="/questions">
+          <Link href="/questions">
             Explorar todos os cursos
           </Link>
         </button>

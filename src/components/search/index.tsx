@@ -42,8 +42,8 @@ function Search() {
                 <Sheet.Backdrop />
             </Sheet>
             {isPhone ? (
-                <div className="p-10 bg-gray-400 rounded-md" onClick={() => setBottomsheetOpen(oldState => !oldState)}>
-                    <span>Disciplina, assunto, prova...</span>
+                <div className="pt-4 pb-4 bg-gray-200 rounded-lg flex justify-center items-center" onClick={() => setBottomsheetOpen(oldState => !oldState)}>
+                    <span className="text-center font-medium">Disciplina, assunto, prova...</span>
                 </div>
             ) : (
                 <SearchComponent/>

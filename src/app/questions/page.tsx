@@ -1,6 +1,7 @@
 
 "use client";
 
+import { Pagination } from "@/components/pagination";
 import { QuestionSingle } from "@/components/question";
 import { QuestionMultiple } from "@/components/questionMultiple";
 import { Search } from "@/components/search";
@@ -89,7 +90,7 @@ export default function Questions() {
                         ? <QuestionMultiple {...question} key={index}/> 
                         : <QuestionSingle {...question} key={index}/>
                 ))}
-
+                <Pagination/>
             </main>
         </Fragment>
 

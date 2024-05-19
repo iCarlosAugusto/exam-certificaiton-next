@@ -33,7 +33,16 @@ function QuestionSingle({text, alternatives, lastUserReply}: QuestionEntity) {
             </div>
 
             <div className="p-6">
-                <p className="text-base font-medium">{text}</p>
+                <div className="flex flex-col">
+
+                    <div className="border-2 border-red-500 self-end p-3 rounded-full">
+                        <span className="text-red-500">
+                            Resolvi errado!
+                        </span>
+                    </div>
+                    <p className="text-base font-medium mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium optio fugit consequatur ducimus similique quibusdam mollitia debitis doloribus quis nobis. Architecto, fugit voluptatem ad amet fuga exercitationem corrupti voluptatum quod.</p>
+                </div>
+
                 {alternatives.map((alternative, index) =>
                     <div className="ml-6 mt-2" onClick={() => handlePickQuestion(alternative)}>
                

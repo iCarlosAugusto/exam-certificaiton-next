@@ -1,6 +1,7 @@
 
 "use client";
 
+import { ModalAuthentication } from "@/components/modal";
 import { Pagination } from "@/components/pagination";
 import { QuestionSingle } from "@/components/question";
 import { QuestionMultiple } from "@/components/questionMultiple";
@@ -80,6 +81,7 @@ export default function Questions() {
 
     return (
         <Fragment>
+            <ModalAuthentication/>
             <main className="px-6 md:px-32 lg:px-72">
                 <h1>Questões AWS Cloud Patricioner</h1>
                 <Suspense>

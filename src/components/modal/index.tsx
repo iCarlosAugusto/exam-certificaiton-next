@@ -3,6 +3,8 @@ import { Button } from "../button";
 import { useActionState } from "react";
 import { createAccount } from "@/actions/createAccount.action";
 import { useFormState } from "react-dom";
+import { useAuthentication } from "@/hooks/useAuthentication";
+import { LoginWithGoogle } from "../login-social/loginWithGoogle";
 
 function ModalAuthentication() {
 
@@ -11,6 +13,7 @@ function ModalAuthentication() {
     }
 
     const [state, formAction] = useFormState(createAccount, initialState);
+    const { authenticateWithGoogle, authenticateWithGithub, isLoading } = useAuthentication();
     
     return (
         <div className="w-screen h-screen top-0 left-0 right-0 bottom-0 fixed z-50 flex items-center justify-center ">
@@ -20,9 +23,7 @@ function ModalAuthentication() {
                 
                 <span>Seja bem-vindo! É um prazer ter você aqui :) <br/>Comece hoje a estudar gratuitamente</span>
 
-                <div className="border border-black p-2 rounded mt-5 w-full cursor-pointer">
-                    <span>Continuar com Google</span>
-                </div>
+                <LoginWithGoogle onClick={authenticateWithGoogle} isDisabled={isLoading}/>
                 <div className="border border-black p-2 rounded mt-5 w-full cursor-pointer">
                     <span>Continuar com Github</span>
                 </div>

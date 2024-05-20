@@ -81,7 +81,7 @@ export default function Questions() {
 
     return (
         <Fragment>
-            <ModalAuthentication/>
+            <ModalAuthentication isOpen={false}/>
             <main className="px-6 md:px-32 lg:px-72">
                 <h1>Questões AWS Cloud Patricioner</h1>
                 <Suspense>

@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@/components/input";
 import { Button } from "../button";
 import { Fragment, useActionState } from "react";

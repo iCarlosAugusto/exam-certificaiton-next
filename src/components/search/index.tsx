@@ -1,3 +1,5 @@
+"use client";
+
 import { Fragment, useEffect, useState } from "react"
 import Sheet from 'react-modal-sheet';
 import { SearchComponent } from "./search.compoent";

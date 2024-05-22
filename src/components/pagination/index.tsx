@@ -17,7 +17,7 @@ function Pagination() {
           return params.toString()
         },
         [searchParams]
-      )
+    )
 
     return (
         <div className="mt-5 mb-5 flex justify-center items-center">

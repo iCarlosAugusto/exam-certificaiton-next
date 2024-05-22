@@ -1,5 +1,5 @@
 export interface AlternativeEntity {
     id: string;
-    text: string;
+    textAlternative: string;
     isCorrect: boolean;
 }

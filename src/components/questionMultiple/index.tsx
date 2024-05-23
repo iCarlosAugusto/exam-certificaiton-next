@@ -51,14 +51,14 @@ function QuestionMultiple({text, alternatives, lastUserReply}: QuestionEntity) {
                             Resolvi errado!
                         </span>
                     </div>
-                    <p className="text-base font-medium mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium optio fugit consequatur ducimus similique quibusdam mollitia debitis doloribus quis nobis. Architecto, fugit voluptatem ad amet fuga exercitationem corrupti voluptatum quod.</p>
+                    <p className="text-base font-medium mt-4">{text}</p>
                 </div>
 
                 {alternatives.map((alternative, index) =>
                     <div className="ml-6 mt-2" onClick={() => handlePickQuestion(alternative)}>
                         <Alternative 
                             isSelected={currentAlternativeSelected.includes(alternative)}
-                            text={alternative.text}
+                            text={alternative.textAlternative}
                             label={indexToLabel(index)}
                         />
                     </div>

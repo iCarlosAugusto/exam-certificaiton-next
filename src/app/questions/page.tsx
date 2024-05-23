@@ -6,14 +6,18 @@ import { QuestionMultiple } from "@/components/questionMultiple";
 import { Search } from "@/components/search";
 import { Pageable } from "@/entities/pagable.interface";
 import { QuestionEntity, QuestionType } from "@/entities/question.entity";
-import { Suspense } from "react";
 import { Fragment } from "react/jsx-runtime";
 
 
-export default async function Questions() {
+export default async function Questions({searchParams }: {
+    searchParams?: {
+      query?: string;
+      page?: string;
+    };
+  }) {
+    const currentPage = searchParams?.page ?? "0";
+    const questions: Pageable<QuestionEntity[]> = await getQuestionsAction("e87164d1-fb2e-4c5e-b361-00634a895962", currentPage);
 
-    const questions: Pageable<QuestionEntity[]> = await getQuestionsAction("e87164d1-fb2e-4c5e-b361-00634a895962", 0);
-    
     return (
         <Fragment>
             <ModalAuthentication isOpen={false}/>

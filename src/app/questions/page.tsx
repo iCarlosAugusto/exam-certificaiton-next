@@ -15,14 +15,17 @@ export default async function Questions({searchParams }: {
       page?: string;
     };
   }) {
-    const currentPage = searchParams?.page ?? "0";
-    const questions: Pageable<QuestionEntity[]> = await getQuestionsAction("e87164d1-fb2e-4c5e-b361-00634a895962", currentPage);
+    const currentPage = Number(searchParams?.page ?? "0");
+    const questions: Pageable<QuestionEntity[]> = await getQuestionsAction(
+        "e87164d1-fb2e-4c5e-b361-00634a895962",
+        currentPage !== 0 ? currentPage - 1 : currentPage
+    );
 
     return (
         <Fragment>
             <ModalAuthentication isOpen={false}/>
             <main className="px-6 md:px-32 lg:px-72">
-                <h1>Questões AWS Cloud Patricioner</h1>
+                <h1>Questões AWS Cloud Patricioner TOTAL PAGES: {questions.totalPages}</h1>
                 <Search/>
                 {questions.content.map((question, index) => (
                     question.questionType === QuestionType.multipleReplies 

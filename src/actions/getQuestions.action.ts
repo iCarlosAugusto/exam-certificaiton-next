@@ -5,8 +5,8 @@ import { Pageable } from "@/entities/pagable.interface";
 import { QuestionEntity } from "@/entities/question.entity";
 
 
-export const getQuestionsAction = async (courseId: string, page: number) => {
-    const { data } = await httpRequest.get<Pageable<QuestionEntity[]>>(`/courses/${courseId}/questions`);
+export const getQuestionsAction = async (courseId: string, page: string) => {
+    const { data } = await httpRequest.get<Pageable<QuestionEntity[]>>(`/courses/${courseId}/questions?page=${page}`);
     return data;
 }
 

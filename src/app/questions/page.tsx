@@ -20,7 +20,6 @@ export default async function Questions({searchParams }: {
         "e87164d1-fb2e-4c5e-b361-00634a895962",
         currentPage !== 0 ? currentPage - 1 : currentPage
     );
-
     return (
         <Fragment>
             <ModalAuthentication isOpen={false}/>
@@ -32,7 +31,7 @@ export default async function Questions({searchParams }: {
                         ? <QuestionMultiple {...question} key={index * Math.random()}/> 
                         : <QuestionSingle {...question} key={index * Math.random()}/>
                 ))}
-                <Pagination/>
+                <Pagination totalPages={questions.totalPages}/>
             </main>
         </Fragment>
     )

@@ -2,13 +2,17 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { Fragment, useCallback } from "react";
 
-function Pagination() {
+interface PaginationProps {
+    totalPages: number
+}
+
+function Pagination({ totalPages }: PaginationProps) {
     const path = usePathname();
     const searchParams = useSearchParams();
 
-    const currentPage = searchParams.get("page") ?? "1";
+    const currentPage = Number(searchParams.get("page") ?? "1");
     const createQueryString = useCallback(
         (name: string, value: string) => {
           const params = new URLSearchParams(searchParams.toString())
@@ -20,16 +24,20 @@ function Pagination() {
     )
 
     return (
-        <div className="mt-5 mb-5 flex justify-center items-center">
-            {[1,2,3,4,5].map(el => (
-                <Link href={path + '?' + createQueryString('page', el.toString())}>
-                    <div className={`border-2 border-slate-200 ${currentPage === el.toString() ? 'bg-slate-200' : 'bg-white'} rounded-full items-center justify-center w-10 h-10 flex flex-row m-2 cursor-pointer`}>
-                        <span>
-                            {el.toString()}
-                        </span>
-                    </div>
-                </Link>
-            ))}
+        <div className="mt-5 mb-5 flex justify-center items-center flex-row">
+            {Array.from({ length: totalPages }, (_, i) => i +1).map(el => {
+                return (
+                    <Fragment>
+                        <div>
+                            <Link href={path + '?' + createQueryString('page', el.toString())} key={el}>
+                                <div className={`border-2 border-slate-200 ${currentPage === el ? 'bg-slate-200' : 'bg-white'} rounded-full items-center justify-center w-10 h-10 flex flex-row m-2 cursor-pointer`}>
+                                    <span>{el}</span>
+                                </div>
+                            </Link>
+                        </div>
+                    </Fragment>
+                )
+            })}
         </div>
     )
 }

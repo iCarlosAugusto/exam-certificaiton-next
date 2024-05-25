@@ -8,7 +8,7 @@ import { useFormState } from "react-dom";
 import { useAuthentication } from "@/hooks/useAuthentication";
 import { LoginWithGoogle } from "../login-social/loginWithGoogle";
 import { IconX } from '@tabler/icons-react';
-import { ZodIssue, typeToFlattenedError, z } from "zod";
+import { typeToFlattenedError, z } from "zod";
 
 interface ModalAuthenticationProps {
   isOpen: boolean;
@@ -21,7 +21,7 @@ function ModalAuthentication({ isOpen, closeModal }: ModalAuthenticationProps) {
   };
 
   const [state, formAction] = useFormState(createAccount, initialState);
-  const { authenticateWithGoogle, authenticateWithGithub, isLoading } = useAuthentication();
+  const { authenticateWithGoogle, authenticateWithGithub, createAccountWithEmailAndPassword } = useAuthentication();
   const [formErros, setFormErros] = useState<typeToFlattenedError<{ userName: string, email: string; password: string; }, string> | null>();
 
   const handleCloseModal = () => {
@@ -51,8 +51,8 @@ function ModalAuthentication({ isOpen, closeModal }: ModalAuthenticationProps) {
     const result = createAccountSchema.safeParse(newAccount);
     if(!result.success){
       setFormErros(result.error.formErrors);
+      return;
     }
-    //await createAccount();
   }
 
   return (
@@ -77,7 +77,6 @@ function ModalAuthentication({ isOpen, closeModal }: ModalAuthenticationProps) {
 
             <LoginWithGoogle
               onClick={authenticateWithGoogle}
-              isDisabled={isLoading}
             />
             <div className="border border-black p-2 rounded mt-5 w-full cursor-pointer">
               <span>Continuar com Github</span>

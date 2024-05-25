@@ -2,6 +2,7 @@
 
 import { Alternative } from "@/components/alternative";
 import { Button } from "@/components/button";
+import { ModalAuthentication } from "@/components/modal";
 import { AlternativeEntity } from "@/entities/alternative.entity";
 import { indexToLabel } from "@/utils/indexToAlternativeLabel";
 import { Fragment, useState } from "react";
@@ -13,6 +14,7 @@ interface AlternativesProps {
 function AlternativesComponent({alternatives}: AlternativesProps) {
     const [currentAlternativeSelected, setCurrentAlternativeSelected] = useState<AlternativeEntity | null>(null);
     const [showReply, setShowReply] = useState(false);
+    const [showModalAuthentication, setShowModalAuthentication] = useState(false);
 
     const handlePickQuestion = (alternative: AlternativeEntity) => {
         if(showReply){
@@ -22,11 +24,20 @@ function AlternativesComponent({alternatives}: AlternativesProps) {
     }
 
     const handleReplyQuestion = () => {
+        toggleModalAuthentication();
         setShowReply(true);
+    }
+
+    const toggleModalAuthentication = () => {
+        setShowModalAuthentication(oldState => !oldState);
     }
 
     return (
         <Fragment>
+            <ModalAuthentication
+                isOpen={showModalAuthentication}
+                closeModal={toggleModalAuthentication}
+            />
             {alternatives.map((alternative, index) =>
                 <div className="ml-6 mt-2" onClick={() => handlePickQuestion(alternative)}>
                     <Alternative

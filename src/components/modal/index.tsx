@@ -22,9 +22,12 @@ function ModalAuthentication({ isOpen, closeModal }: ModalAuthenticationProps) {
 
   const [state, formAction] = useFormState(createAccount, initialState);
   const { authenticateWithGoogle, authenticateWithGithub, isLoading } = useAuthentication();
-  const [formErros, setFormErros] = useState<typeToFlattenedError<{ userName: string, email: string; password: string; }, string>>();
+  const [formErros, setFormErros] = useState<typeToFlattenedError<{ userName: string, email: string; password: string; }, string> | null>();
 
-  const handleCloseModal = () => closeModal();
+  const handleCloseModal = () => {
+    setFormErros(null);
+    closeModal();
+  }
   
   if(isOpen){
     document.body.style.overflow = "hidden"

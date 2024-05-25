@@ -8,7 +8,7 @@ import { useFormState } from "react-dom";
 import { useAuthentication } from "@/hooks/useAuthentication";
 import { LoginWithGoogle } from "../login-social/loginWithGoogle";
 import { IconX } from '@tabler/icons-react';
-
+import { ZodIssue, typeToFlattenedError, z } from "zod";
 
 interface ModalAuthenticationProps {
   isOpen: boolean;
@@ -22,13 +22,34 @@ function ModalAuthentication({ isOpen, closeModal }: ModalAuthenticationProps) {
 
   const [state, formAction] = useFormState(createAccount, initialState);
   const { authenticateWithGoogle, authenticateWithGithub, isLoading } = useAuthentication();
+  const [formErros, setFormErros] = useState<typeToFlattenedError<{ userName: string, email: string; password: string; }, string>>();
 
   const handleCloseModal = () => closeModal();
   
   if(isOpen){
     document.body.style.overflow = "hidden"
-  } else{
+  } else {
     document.body.style.overflow = "visible"
+  }
+
+  const validateForm = async (formData: FormData) => {
+    const createAccountSchema = z.object({
+      userName: z.string({message: "Campo obrigatório"}).trim().min(3, {message: "O nome precisa ter pelo menos 3 letras"}).max(15, {message: "Máximo 15 letras"}),
+      email: z.string({message: "Campo obrigatório"}).email("Email inválido"),
+      password: z.string({message: "Campo obrigatório"}).min(1, {message: "Campo obrigatório!"})
+    });
+
+    const newAccount = {
+      userName: formData.get("userName"),
+      email: formData.get("email"),
+      password: formData.get("password")
+    }
+
+    const result = createAccountSchema.safeParse(newAccount);
+    if(!result.success){
+      setFormErros(result.error.formErrors);
+    }
+    //await createAccount();
   }
 
   return (
@@ -60,19 +81,23 @@ function ModalAuthentication({ isOpen, closeModal }: ModalAuthenticationProps) {
             </div>
 
             <span className="mb-2 mt-2">ou</span>
-            <form action={formAction} className="w-full">
-              <Input placeholder="Seu nome" className="mb-4" name="username" />
+            <form action={validateForm} className="w-full">
+              <Input
+                placeholder="Seu nome"
+                name="userName"
+                error={formErros?.fieldErrors.userName?.[0]}
+              />
               <Input
                 placeholder="Seu email"
-                className="mb-4"
-                type="text"
+                type="email"
                 name="email"
+                error={formErros?.fieldErrors.email?.[0]}
               />
               <Input
                 placeholder="Senha"
-                className="mb-4 w-full"
                 type="password"
                 name="password"
+                error={formErros?.fieldErrors.password?.[0]}
               />
               <Button
                 type="submit"

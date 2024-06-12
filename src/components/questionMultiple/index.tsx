@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react"
-import { Button } from "../button";
 import { Alternative } from "../alternative";
 import { QuestionEntity } from "@/entities/question.entity";
 import { AlternativeEntity } from "@/entities/alternative.entity";
 import { indexToLabel } from "@/utils/indexToAlternativeLabel";
+import { ButtonComponent } from "../button";
 
 function QuestionMultiple({text, alternatives, lastUserReply}: QuestionEntity) {
 
@@ -67,7 +67,7 @@ function QuestionMultiple({text, alternatives, lastUserReply}: QuestionEntity) {
 
                 <div className="flex items-center mt-12">
         
-                    <Button text="Confirmar resposta" onClick={handleReplyQuestion} isDisabled={currentAlternativeSelected == null}/>
+                    <ButtonComponent text="Confirmar resposta" onClick={handleReplyQuestion} isDisabled={currentAlternativeSelected == null}/>
                     {/* {showReply && (
                         <div className={`${currentAlternativeSelected?.isCorrect ? "bg-green-200" : "bg-red-200"} rounded-xl p-4 ml-5`}>
                             <span className={`${currentAlternativeSelected?.isCorrect ? "text-green-600" : "text-red-600"} font-bold`}>

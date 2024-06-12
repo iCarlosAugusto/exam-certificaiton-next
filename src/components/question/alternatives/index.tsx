@@ -1,7 +1,7 @@
 "use client";
 
 import { Alternative } from "@/components/alternative";
-import { Button } from "@/components/button";
+import { ButtonComponent } from "@/components/button";
 import { ModalAuthentication } from "@/components/modal";
 import { AlternativeEntity } from "@/entities/alternative.entity";
 import { indexToLabel } from "@/utils/indexToAlternativeLabel";
@@ -49,7 +49,7 @@ function AlternativesComponent({alternatives}: AlternativesProps) {
             )}
 
             <div className="flex items-center mt-12">
-                <Button text="Confirmar resposta" onClick={handleReplyQuestion} isDisabled={currentAlternativeSelected == null}/>
+                <ButtonComponent text="Confirmar resposta" onClick={handleReplyQuestion} isDisabled={currentAlternativeSelected == null}/>
                 {showReply && (
                     <div className={`${currentAlternativeSelected?.isCorrect ? "bg-green-200" : "bg-red-200"} rounded-xl p-4 ml-5`}>
                         <span className={`${currentAlternativeSelected?.isCorrect ? "text-green-600" : "text-red-600"} font-bold`}>

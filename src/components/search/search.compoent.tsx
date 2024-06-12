@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "../button";
 import { Suspense } from "react";
 import Select from 'react-select';
 import { useRouter } from 'next/navigation'
+import { ButtonComponent } from "../button";
 
 interface SelectedQuestionType{
     value: string;
@@ -40,7 +40,7 @@ function SearchComponent() {
                     </div>
                 </div>
             </div>
-            <Button
+            <ButtonComponent
                 text="Buscar"
                 onClick={() => console.log("buscar!")}
                 className="mt-9"

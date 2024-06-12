@@ -1,7 +1,6 @@
 "use client";
 
 import { Input } from "@/components/input";
-import { Button } from "../button";
 import { Fragment, useActionState, useState } from "react";
 import { createAccount } from "@/actions/createAccount.action";
 import { useFormState } from "react-dom";
@@ -9,6 +8,7 @@ import { useAuthentication } from "@/hooks/useAuthentication";
 import { LoginWithGoogle } from "../login-social/loginWithGoogle";
 import { IconX } from '@tabler/icons-react';
 import { typeToFlattenedError, z } from "zod";
+import { ButtonComponent } from "../button";
 
 interface ModalAuthenticationProps {
   isOpen: boolean;
@@ -101,7 +101,7 @@ function ModalAuthentication({ isOpen, closeModal }: ModalAuthenticationProps) {
                 name="password"
                 error={formErros?.fieldErrors.password?.[0]}
               />
-              <Button
+              <ButtonComponent
                 type="submit"
                 className="w-full md:w-full"
                 text="Criar conta"

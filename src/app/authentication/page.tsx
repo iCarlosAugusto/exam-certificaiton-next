@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/button";
+import { ButtonComponent } from "@/components/button";
 import { Input } from "@/components/input"
 export default function Authentication() {
 
@@ -22,7 +22,7 @@ export default function Authentication() {
                 <form>
                     <Input placeholder="Email"/>
                     <Input placeholder="Senha"/>
-                    <Button text="Entrar" onClick={() => {}}/>
+                    <ButtonComponent text="Entrar" onClick={() => {}}/>
                 </form>
                 <span>Esqueci a senha</span>
             </div>

@@ -34,10 +34,10 @@ function AlternativesComponent({alternatives}: AlternativesProps) {
 
     return (
         <Fragment>
-            <ModalAuthentication
+            {/* <ModalAuthentication
                 isOpen={showModalAuthentication}
                 closeModal={toggleModalAuthentication}
-            />
+            /> */}
             {alternatives.map((alternative, index) =>
                 <div className="ml-6 mt-2" onClick={() => handlePickQuestion(alternative)}>
                     <Alternative

@@ -1,5 +1,5 @@
 import { getQuestionsAction } from "@/actions/getQuestions.action";
-import { Pagination } from "@/components/pagination";
+import { PaginationComponent } from "@/components/pagination";
 import { QuestionSingle } from "@/components/question";
 import { QuestionMultiple } from "@/components/questionMultiple";
 import { Search } from "@/components/search";
@@ -30,7 +30,7 @@ export default async function Questions({searchParams }: {
                         ? <QuestionMultiple {...question} key={index * Math.random()}/> 
                         : <QuestionSingle {...question} key={index * Math.random()}/>
                 ))}
-                <Pagination totalPages={questions.totalPages}/>
+                <PaginationComponent totalPages={questions.totalPages}/>
             </main>
         </Fragment>
     )
